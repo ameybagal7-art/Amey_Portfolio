@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Amey Bagal — Class 10 student, aspiring entrepreneur, coder, sketch artist, and future IITian." />
+  <title>Amey Bagal | Dream. Build. Become.</title>
+  <style>
+    :root {
+      --bg: #08090c;
+      --panel: #111319;
+      --panel2: #171a22;
+      --text: #f4f4f6;
+      --muted: #a7aab5;
+      --gold: #e9bd65;
+      --gold2: #fff0bd;
+      --line: rgba(233,189,101,.2);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      line-height: 1.6; overflow-x: hidden;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1;
+      background: radial-gradient(ellipse at 80% 5%, rgba(233,189,101,.10), transparent 35%),
+                  radial-gradient(ellipse at 10% 60%, rgba(71,91,140,.10), transparent 30%);
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, 90%); margin: auto; }
+    nav {
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(18px);
+      background: rgba(8,9,12,.82); border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .nav-inner { min-height: 72px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .brand { font-weight: 900; letter-spacing: .08em; font-size: 1.1rem; }
+    .brand span { color: var(--gold); }
+    .nav-links { display: flex; gap: 25px; color: var(--muted); font-size: .88rem; }
+    .nav-links a:hover { color: var(--gold); }
+    .menu-btn { display: none; background: none; border: 1px solid var(--line); color: var(--gold); padding: 7px 10px; border-radius: 8px; }
+    .hero { min-height: 86vh; display: grid; align-items: center; padding: 80px 0 90px; }
+    .hero-grid { display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: 55px; }
+    .eyebrow { color: var(--gold); text-transform: uppercase; letter-spacing: .22em; font-size: .76rem; font-weight: 800; }
+    h1 { font-size: clamp(3.3rem, 8vw, 6.6rem); line-height: .98; letter-spacing: -.065em; margin: 18px 0 24px; }
+    h1 span { color: var(--gold); }
+    .hero p { max-width: 610px; color: var(--muted); font-size: 1.08rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 32px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 20px; border-radius: 10px; font-weight: 800; font-size: .9rem; transition: .25s; }
+    .btn-primary { background: var(--gold); color: #17120a; }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 35px rgba(233,189,101,.2); }
+    .btn-outline { border: 1px solid rgba(255,255,255,.2); color: var(--text); }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-card {
+      position: relative; min-height: 400px; border: 1px solid var(--line); border-radius: 28px;
+      background: linear-gradient(145deg, rgba(233,189,101,.12), rgba(17,19,25,.75) 55%);
+      display: flex; flex-direction: column; justify-content: space-between; padding: 28px; overflow: hidden;
+      box-shadow: 0 25px 90px rgba(0,0,0,.3);
+    }
+    .hero-card::after { content: "AB"; position: absolute; right: -12px; bottom: 8px; font-size: 12rem; line-height: 1; font-weight: 900; color: rgba(233,189,101,.07); letter-spacing: -.1em; }
+    .orbit { width: 120px; height: 120px; border: 1px solid rgba(233,189,101,.4); border-radius: 50%; display: grid; place-items: center; font-size: 2.6rem; color: var(--gold); box-shadow: 0 0 55px rgba(233,189,101,.1); }
+    .card-bottom { position: relative; z-index: 1; }
+    .card-bottom h2 { font-size: 1.7rem; }
+    .card-bottom p { color: var(--muted); font-size: .92rem; margin-top: 4px; }
+    section { padding: 88px 0; }
+    .section-head { margin-bottom: 34px; }
+    .section-head h2 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.04em; margin-top: 8px; }
+    .section-head p { color: var(--muted); max-width: 650px; margin-top: 9px; }
+    .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 22px; }
+    .panel { background: linear-gradient(145deg, var(--panel2), var(--panel)); border: 1px solid rgba(255,255,255,.07); border-radius: 18px; padding: 27px; }
+    .panel h3 { margin-bottom: 12px; font-size: 1.15rem; }
+    .panel p { color: var(--muted); }
+    .quote { color: var(--gold2) !important; font-size: 1.35rem; font-weight: 750; line-height: 1.4; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 18px; }
+    .stat { background: rgba(255,255,255,.035); border-radius: 12px; padding: 15px; }
+    .stat strong { display: block; color: var(--gold); font-size: 1.1rem; }
+    .stat span { color: var(--muted); font-size: .78rem; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .skill { min-height: 180px; transition: transform .25s, border-color .25s; }
+    .skill:hover, .vehicle:hover { transform: translateY(-5px); border-color: var(--line); }
+    .icon { width: 44px; height: 44px; display: grid; place-items: center; background: rgba(233,189,101,.1); border: 1px solid var(--line); border-radius: 13px; font-size: 1.35rem; margin-bottom: 17px; }
+    .skill p { font-size: .92rem; }
+    .dream { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: stretch; }
+    .dream-feature { background: linear-gradient(140deg, rgba(233,189,101,.16), rgba(17,19,25,.8)); }
+    .big-number { color: var(--gold); font-size: 4.3rem; font-weight: 900; letter-spacing: -.07em; line-height: 1.1; }
+    .steps { display: grid; gap: 15px; margin-top: 18px; }
+    .step { display: flex; gap: 13px; align-items: flex-start; }
+    .step-num { flex: 0 0 30px; width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; background: var(--gold); color: #17120a; font-weight: 900; font-size: .8rem; }
+    .step p { font-size: .9rem; }
+    .garage { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .vehicle { min-height: 160px; position: relative; overflow: hidden; transition: .25s; }
+    .vehicle .emoji { font-size: 2rem; margin-bottom: 18px; }
+    .vehicle h3 { font-size: 1.1rem; }
+    .vehicle p { color: var(--muted); font-size: .85rem; margin-top: 4px; }
+    .vehicle::after { content: ""; position: absolute; width: 120px; height: 120px; border-radius: 50%; right: -50px; bottom: -65px; background: rgba(233,189,101,.06); }
+    .note { color: var(--muted); font-size: .85rem; margin-top: 17px; }
+    .contact { text-align: center; padding: 48px 25px; background: linear-gradient(145deg, rgba(233,189,101,.12), rgba(17,19,25,.85)); border: 1px solid var(--line); border-radius: 22px; }
+    .contact h2 { font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: -.05em; margin: 10px 0; }
+    .contact p { color: var(--muted); max-width: 560px; margin: 0 auto; }
+    footer { padding: 25px 0 35px; color: #858895; font-size: .82rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,.08); padding-top: 20px; }
+    .gold { color: var(--gold); }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 800px) {
+      .hero-grid, .about-grid, .dream { grid-template-columns: 1fr; }
+      .hero { min-height: auto; padding-top: 65px; }
+      .hero-card { min-height: 300px; }
+      .cards, .garage { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { display: none; position: absolute; left: 0; right: 0; top: 72px; padding: 18px 5%; background: #0c0d11; border-bottom: 1px solid var(--line); flex-direction: column; gap: 15px; }
+      .nav-links.open { display: flex; }
+      .menu-btn { display: inline-block; }
+    }
+    @media (max-width: 520px) {
+      .cards, .garage { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
+      section { padding: 65px 0; }
+      h1 { font-size: 3.55rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap nav-inner">
+      <a class="brand" href="#home">AMEY<span>.</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#dream">My Dream</a><a href="#garage">Dream Garage</a>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Student • Creator • Future Entrepreneur</div>
+          <h1>Hey, I'm<br><span>Amey Bagal.</span></h1>
+          <p>Class 10 student with big ambitions, a curious mind, and a builder's mindset. I'm learning, creating, and working toward a future where ideas become reality.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#about">Discover My World ↗</a>
+            <a class="btn btn-outline" href="#dream">Explore My Goals</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="orbit">✦</div>
+          <div class="card-bottom">
+            <div class="eyebrow">My personal motto</div>
+            <h2>Dream. Build. <span class="gold">Become.</span></h2>
+            <p>Small steps today. Extraordinary possibilities tomorrow.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">A little about me</div>
+          <h2>Curious by nature.<br><span class="gold">Ambitious by choice.</span></h2>
+        </div>
+        <div class="about-grid">
+          <div class="panel reveal">
+            <h3>My story</h3>
+            <p>I'm Amey Bagal, a Class 10 student who enjoys exploring technology, creativity, markets, and personal growth. I believe success comes from consistency, discipline, and staying ready to learn.</p>
+            <div class="stats">
+              <div class="stat"><strong>Class 10</strong><span>Current chapter</span></div>
+              <div class="stat"><strong>Learn</strong><span>Every single day</span></div>
+              <div class="stat"><strong>Build</strong><span>One idea at a time</span></div>
+            </div>
+          </div>
+          <div class="panel reveal">
+            <h3>What I believe</h3>
+            <p class="quote">“Your future is built by what you practise today, not just what you dream about.”</p>
+            <p style="margin-top:17px">My focus is to strengthen my studies, improve my skills, stay fit, and develop the mindset to create something meaningful of my own.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">What I'm into</div>
+          <h2>My skills & interests</h2>
+          <p>A mix of logic, creativity, curiosity, and self-discipline.</p>
+        </div>
+        <div class="cards">
+          <article class="panel skill reveal"><div class="icon">💻</div><h3>Coding</h3><p>Exploring technology and learning how ideas turn into useful digital projects.</p></article>
+          <article class="panel skill reveal"><div class="icon">📈</div><h3>Trading & Markets</h3><p>Interested in markets, financial literacy, and understanding risk with patience.</p></article>
+          <article class="panel skill reveal"><div class="icon">✏️</div><h3>Sketching</h3><p>Turning imagination into art and sharpening my eye for detail.</p></article>
+          <article class="panel skill reveal"><div class="icon">🏋️</div><h3>Gym & Fitness</h3><p>Building strength, energy, and healthy habits step by step.</p></article>
+          <article class="panel skill reveal"><div class="icon">🧠</div><h3>Self-improvement</h3><p>Working on discipline, confidence, consistency, and a stronger mindset.</p></article>
+          <article class="panel skill reveal"><div class="icon">🚀</div><h3>Entrepreneurship</h3><p>Dreaming of building a business, solving real problems, and creating value.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="dream">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">The mission</div>
+          <h2>Big dreams. Daily action.</h2>
+        </div>
+        <div class="dream">
+          <div class="panel dream-feature reveal">
+            <div class="eyebrow">My academic goal</div>
+            <div class="big-number">IIT</div>
+            <h3 style="font-size:1.5rem;margin:12px 0">IIT Bombay is the dream.</h3>
+            <p>I'm aiming to build a strong academic foundation, stay curious, and prepare seriously for the opportunities ahead. The dream gives me direction; the daily work will move me forward.</p>
+          </div>
+          <div class="panel reveal">
+            <h3>My growth roadmap</h3>
+            <div class="steps">
+              <div class="step"><span class="step-num">1</span><div><strong>Master the basics</strong><p>Focus on Class 10 concepts and build strong study habits.</p></div></div>
+              <div class="step"><span class="step-num">2</span><div><strong>Keep learning</strong><p>Practise coding, explore ideas, and develop problem-solving skills.</p></div></div>
+              <div class="step"><span class="step-num">3</span><div><strong>Stay consistent</strong><p>Balance studies, fitness, hobbies, rest, and self-improvement.</p></div></div>
+              <div class="step"><span class="step-num">4</span><div><strong>Create something valuable</strong><p>Grow toward my long-term goal of becoming an entrepreneur.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="garage">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">The dream collection</div>
+          <h2>My dream garage <span class="gold">✦</span></h2>
+          <p>Machines I admire for their design, performance, presence, and engineering.</p>
+        </div>
+        <h3 style="margin-bottom:15px">Cars</h3>
+        <div class="garage">
+          <article class="panel vehicle reveal"><div class="emoji">🚙</div><h3>Land Rover Defender</h3><p>Bold design. Go-anywhere spirit.</p></article>
+          <article class="panel vehicle reveal"><div class="emoji">🚘</div><h3>Toyota Fortuner Legender</h3><p>Strong road presence and a commanding stance.</p></article>
+          <article class="panel vehicle reveal"><div class="emoji">🛻</div><h3>Mercedes-Benz G-Wagon</h3><p>Iconic shape with a luxury attitude.</p></article>
+          <article class="panel vehicle reveal"><div class="emoji">🏎️</div><h3>McLaren</h3><p>Supercar engineering and pure performance.</p></article>
+          <article class="panel vehicle reveal"><div class="emoji">🏁</div><h3>BMW M4</h3><p>Sporty looks with a performance-focused feel.</p></article>
+        </div>
+        <h3 style="margin:30px 0 15px">Bikes</h3>
+        <div class="garage">
+          <article class="panel vehicle reveal"><div class="emoji">🏍️</div><h3>Royal Enfield GT 650</h3><p>Classic café-racer style and character.</p></article>
+          <article class="panel vehicle reveal"><div class="emoji">⚡</div><h3>Kawasaki Ninja H2</h3><p>Futuristic styling and high-performance engineering.</p></article>
+        </div>
+        <p class="note">Dreams are motivation—not a deadline. Build the skills and habits first, and let the milestones come with time.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact reveal">
+          <div class="eyebrow">This is only the beginning</div>
+          <h2>Watch me <span class="gold">grow.</span></h2>
+          <p>Learning today. Improving tomorrow. Building a future that I'm proud of. Thanks for visiting my little corner of the internet.</p>
+          <div class="actions" style="justify-content:center">
+            <a class="btn btn-primary" href="#home">Back to Top ↑</a>
+            <button class="btn btn-outline" id="quoteBtn" type="button">Give Me a Boost ✦</button>
+          </div>
+          <p id="quoteText" aria-live="polite" style="margin-top:18px;color:var(--gold2)"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© <span id="year"></span> Amey Bagal</span>
+      <span>Designed with ambition <span class="gold">✦</span></span>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const quotes = [
+      "Stay consistent. Your future self will thank you.",
+      "Progress beats perfection when you keep showing up.",
+      "Learn the skill. Build the habit. Earn the result.",
+      "Big goals become real through small daily actions.",
+      "Be patient with the process and serious about the effort."
+    ];
+    document.getElementById('quoteBtn').addEventListener('click', () => {
+      document.getElementById('quoteText').textContent = quotes[Math.floor(Math.random() * quotes.length)];
+    });
+  </script>
+</body>
+</html>
